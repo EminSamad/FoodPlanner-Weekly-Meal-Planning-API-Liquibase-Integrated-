@@ -1,0 +1,45 @@
+databaseChangeLog:
+  - changeSet:
+      id: 3
+      author: emin
+      changes:
+        - insert:
+            tableName: recipe
+            columns:
+              - column: { name: name, value: "Chicken Stir-Fry" }
+              - column: { name: description, value: "A quick and healthy chicken dish with vegetables." }
+        - insert:
+            tableName: recipe
+            columns:
+              - column: { name: name, value: "Spaghetti Carbonara" }
+              - column: { name: description, value: "Classic Italian pasta with creamy sauce." }
+        - insert:
+            tableName: recipe
+            columns:
+              - column: { name: name, value: "Lentil Soup" }
+              - column: { name: description, value: "A warm and hearty vegetarian soup." }
+        - insert:
+            tableName: ingredient
+            columns:
+              - column: { name: name, value: "Chicken breast" }
+              - column: { name: recipe_id, valueComputed: "(SELECT id FROM recipe WHERE name = 'Chicken Stir-Fry')" }
+        - insert:
+            tableName: ingredient
+            columns:
+              - column: { name: name, value: "Bell peppers" }
+              - column: { name: recipe_id, valueComputed: "(SELECT id FROM recipe WHERE name = 'Chicken Stir-Fry')" }
+        - insert:
+            tableName: ingredient
+            columns:
+              - column: { name: name, value: "Pasta" }
+              - column: { name: recipe_id, valueComputed: "(SELECT id FROM recipe WHERE name = 'Spaghetti Carbonara')" }
+        - insert:
+            tableName: ingredient
+            columns:
+              - column: { name: name, value: "Eggs" }
+              - column: { name: recipe_id, valueComputed: "(SELECT id FROM recipe WHERE name = 'Spaghetti Carbonara')" }
+        - insert:
+            tableName: ingredient
+            columns:
+              - column: { name: name, value: "Lentils" }
+              - column: { name: recipe_id, valueComputed: "(SELECT id FROM recipe WHERE name = 'Lentil Soup')" }
